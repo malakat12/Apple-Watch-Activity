@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe7ab3b03ce3b742b367ab7596985b82",
+    "content-hash": "b359a451d53ce29d4f743033fae8d0e1",
     "packages": [
         {
             "name": "brick/math",
@@ -1186,16 +1186,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.4.0",
+            "version": "v12.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9e39df5f865f40f6c582dc2345bb93a20c503f95"
+                "reference": "cdefd852ecb459a65392cd6ccb578c92a15b8e2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9e39df5f865f40f6c582dc2345bb93a20c503f95",
-                "reference": "9e39df5f865f40f6c582dc2345bb93a20c503f95",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/cdefd852ecb459a65392cd6ccb578c92a15b8e2b",
+                "reference": "cdefd852ecb459a65392cd6ccb578c92a15b8e2b",
                 "shasum": ""
             },
             "require": {
@@ -1397,7 +1397,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-03-29T17:27:28+00:00"
+            "time": "2025-03-30T16:27:26+00:00"
         },
         {
             "name": "laravel/passport",
@@ -1533,6 +1533,70 @@
                 "source": "https://github.com/laravel/prompts/tree/v0.3.5"
             },
             "time": "2025-02-11T13:34:40+00:00"
+        },
+        {
+            "name": "laravel/sanctum",
+            "version": "v4.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "ec1dd9ddb2ab370f79dfe724a101856e0963f43c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/ec1dd9ddb2ab370f79dfe724a101856e0963f43c",
+                "reference": "ec1dd9ddb2ab370f79dfe724a101856e0963f43c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/console": "^11.0|^12.0",
+                "illuminate/contracts": "^11.0|^12.0",
+                "illuminate/database": "^11.0|^12.0",
+                "illuminate/support": "^11.0|^12.0",
+                "php": "^8.2",
+                "symfony/console": "^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.6",
+                "orchestra/testbench": "^9.0|^10.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^11.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "sanctum"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/sanctum/issues",
+                "source": "https://github.com/laravel/sanctum"
+            },
+            "time": "2025-01-26T19:34:36+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -1986,6 +2050,97 @@
                 }
             ],
             "time": "2022-12-11T20:36:23+00:00"
+        },
+        {
+            "name": "league/csv",
+            "version": "9.23.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "774008ad8a634448e4f8e288905e070e8b317ff3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/774008ad8a634448e4f8e288905e070e8b317ff3",
+                "reference": "774008ad8a634448e4f8e288905e070e8b317ff3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-filter": "*",
+                "php": "^8.1.2"
+            },
+            "require-dev": {
+                "ext-dom": "*",
+                "ext-xdebug": "*",
+                "friendsofphp/php-cs-fixer": "^3.69.0",
+                "phpbench/phpbench": "^1.4.0",
+                "phpstan/phpstan": "^1.12.18",
+                "phpstan/phpstan-deprecation-rules": "^1.2.1",
+                "phpstan/phpstan-phpunit": "^1.4.2",
+                "phpstan/phpstan-strict-rules": "^1.6.2",
+                "phpunit/phpunit": "^10.5.16 || ^11.5.7",
+                "symfony/var-dumper": "^6.4.8 || ^7.2.3"
+            },
+            "suggest": {
+                "ext-dom": "Required to use the XMLConverter and the HTMLConverter classes",
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters",
+                "ext-mbstring": "Needed to ease transcoding CSV using mb stream filters",
+                "ext-mysqli": "Requiered to use the package with the MySQLi extension",
+                "ext-pdo": "Required to use the package with the PDO extension",
+                "ext-pgsql": "Requiered to use the package with the PgSQL extension",
+                "ext-sqlite3": "Required to use the package with the SQLite3 extension"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "League\\Csv\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CSV data manipulation made easy in PHP",
+            "homepage": "https://csv.thephpleague.com",
+            "keywords": [
+                "convert",
+                "csv",
+                "export",
+                "filter",
+                "import",
+                "read",
+                "transform",
+                "write"
+            ],
+            "support": {
+                "docs": "https://csv.thephpleague.com",
+                "issues": "https://github.com/thephpleague/csv/issues",
+                "rss": "https://github.com/thephpleague/csv/releases.atom",
+                "source": "https://github.com/thephpleague/csv"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/nyamsprod",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-03-28T06:52:04+00:00"
         },
         {
             "name": "league/event",
@@ -3072,99 +3227,6 @@
             "time": "2024-09-09T07:06:30+00:00"
         },
         {
-            "name": "openspout/openspout",
-            "version": "v4.28.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/openspout/openspout.git",
-                "reference": "ab05a09fe6fce57c90338f83280648a9786ce36b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/openspout/openspout/zipball/ab05a09fe6fce57c90338f83280648a9786ce36b",
-                "reference": "ab05a09fe6fce57c90338f83280648a9786ce36b",
-                "shasum": ""
-            },
-            "require": {
-                "ext-dom": "*",
-                "ext-fileinfo": "*",
-                "ext-filter": "*",
-                "ext-libxml": "*",
-                "ext-xmlreader": "*",
-                "ext-zip": "*",
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0"
-            },
-            "require-dev": {
-                "ext-zlib": "*",
-                "friendsofphp/php-cs-fixer": "^3.68.3",
-                "infection/infection": "^0.29.10",
-                "phpbench/phpbench": "^1.4.0",
-                "phpstan/phpstan": "^2.1.2",
-                "phpstan/phpstan-phpunit": "^2.0.4",
-                "phpstan/phpstan-strict-rules": "^2",
-                "phpunit/phpunit": "^11.5.4"
-            },
-            "suggest": {
-                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-mbstring\" is not already installed or is too limited)",
-                "ext-mbstring": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "OpenSpout\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adrien Loison",
-                    "email": "adrien@box.com"
-                }
-            ],
-            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
-            "homepage": "https://github.com/openspout/openspout",
-            "keywords": [
-                "OOXML",
-                "csv",
-                "excel",
-                "memory",
-                "odf",
-                "ods",
-                "office",
-                "open",
-                "php",
-                "read",
-                "scale",
-                "spreadsheet",
-                "stream",
-                "write",
-                "xlsx"
-            ],
-            "support": {
-                "issues": "https://github.com/openspout/openspout/issues",
-                "source": "https://github.com/openspout/openspout/tree/v4.28.5"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/filippotessarotto",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/Slamdunk",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-01-30T13:51:11+00:00"
-        },
-        {
             "name": "paragonie/constant_time_encoding",
             "version": "v3.0.0",
             "source": {
@@ -4168,67 +4230,6 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
-        },
-        {
-            "name": "spatie/simple-excel",
-            "version": "3.7.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/simple-excel.git",
-                "reference": "53546918bb480f7876c8ed295860408ded2e0ebf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/simple-excel/zipball/53546918bb480f7876c8ed295860408ded2e0ebf",
-                "reference": "53546918bb480f7876c8ed295860408ded2e0ebf",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
-                "openspout/openspout": "^4.19",
-                "php": "^8.1"
-            },
-            "require-dev": {
-                "pestphp/pest-plugin-laravel": "^1.3|^2.3|^3.0",
-                "phpunit/phpunit": "^9.4|^10.5|^11.0|^12.0",
-                "spatie/pest-plugin-snapshots": "^1.1|^2.1",
-                "spatie/phpunit-snapshot-assertions": "^4.0|^5.1",
-                "spatie/temporary-directory": "^1.2|^2.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\SimpleExcel\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Read and write simple Excel and CSV files",
-            "homepage": "https://github.com/spatie/simple-excel",
-            "keywords": [
-                "simple-excel",
-                "spatie"
-            ],
-            "support": {
-                "source": "https://github.com/spatie/simple-excel/tree/3.7.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-02-14T12:47:34+00:00"
         },
         {
             "name": "symfony/clock",
