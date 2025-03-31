@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Laravel\Passport\Passport;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,8 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (!app()->runningInConsole()) {
-            Passport::loadKeysFrom(storage_path());
-        }
+        Passport::enablePasswordGrant();
     }
 }
