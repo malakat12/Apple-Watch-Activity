@@ -47,4 +47,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function healthMetric()
+    {
+        return $this->hasMany(healthMetric::class);
+    }
 }
