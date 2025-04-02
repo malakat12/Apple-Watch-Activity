@@ -2,9 +2,28 @@ import React, { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { getDaily } from './healthMetricsSlice';
 import {Line} from 'react-chartjs-2';
-import {Chart as ChartJS, LineElement, PointElement, LinearScale, Title, Tooltip, Legend, Filler } from 'chart.js';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LineElement, 
+    PointElement, 
+    LinearScale, 
+    Title, 
+    Tooltip, 
+    Legend, 
+    Filler 
+} from 'chart.js';
 
-ChartJS.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, Filler);
+ChartJS.register(
+    CategoryScale,
+    LineElement, 
+    PointElement, 
+    LinearScale, 
+    Title, 
+    Tooltip, 
+    Legend, 
+    Filler
+);
 
 const DailyTrendsChart= ()=>{
     const dispatch = useDispatch();

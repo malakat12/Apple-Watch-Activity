@@ -30,31 +30,32 @@ axiosInst.interceptors.request.use(
 
 axiosInst.interceptors.response.use(
   (response) => response,
-  (error) => {
+  async (error) => {
     const originalRequest = error.config;
     
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-    }
-    
-    if (!error.response) {
-      console.error('Network Error:', error.message);
-      return Promise.reject({
-        response: {
-          data: { message: 'Network Error. Please check your connection.' }
+      
+      try {
+        const refreshToken = localStorage.getItem('refresh_token');
+        if (refreshToken) {
+          const { data } = await axios.post(`${API_BASE_URL}/oauth/token`, {
+            grant_type: 'refresh_token',
+            refresh_token: refreshToken,
+            client_id: process.env.REACT_APP_CLIENT_ID,
+            client_secret: process.env.REACT_APP_CLIENT_SECRET,
+          });
+          
+          localStorage.setItem('access_token', data.access_token);
+          localStorage.setItem('refresh_token', data.refresh_token);
+          originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
+          return axiosInst(originalRequest);
         }
-      });
-    }
-    
-    switch (error.response.status) {
-      case 401:
-        break;
-      case 403:
-        console.error('Forbidden:', error.response.data);
-        break;
-      case 500:
-        console.error('Server Error:', error.response.data);
-        break;
+      } catch (refreshError) {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        window.location.href = '/login'; 
+      }
     }
     
     return Promise.reject(error);

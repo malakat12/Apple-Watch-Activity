@@ -3,28 +3,32 @@ import axiosInst from '../utils/axiosInst';
 
 const getStoredToken = () => localStorage.getItem('access_token') || null;
 
-export const login = createAsyncThunk(
-  'auth/login',
-  async (userData, { rejectWithValue, dispatch }) => {
-    try {
-      const response = await axiosInst.post('/login', { 
-        'email'     : userData.email,
-        'password'    : userData.password,
-      })
-      console.log(response);
-      const {access_token} = response.data;
+export const login = createAsyncThunk('auth/login', async (userData, { rejectWithValue, dispatch }) => {
+  try {
+    const { data } = await axiosInst.post('/login', userData);
+    localStorage.setItem('access_token', data.access_token);
+    localStorage.setItem('refresh_token', data.refresh_token); // Add this line
+    
+    const userResponse = await dispatch(getUser());
+    return { 
+      token: data.access_token,
+      user: userResponse.payload.user 
+    };
+  } catch (error) {
+    return rejectWithValue(
+      error.response?.data?.error?.message || 
+      error.response?.data?.message || 
+      'Login failed. Check your credentials.'
+    );  
+  }
+});
 
-      localStorage.setItem('access_token',access_token);
-
-      const userResponse = await dispatch(getUser());
-      return { 
-        token: access_token,
-        user: userResponse.payload.user 
-      };
-    } catch (error) {
-      return rejectWithValue(error.response?.data?.message || 'Login Failed');
-    }
-  });
+export const initializeAuth = createAsyncThunk('auth/initialize', async (_, { dispatch }) => {
+  const token = localStorage.getItem('access_token');
+  if (token) {
+    await dispatch(getUser()); 
+  }
+});
 
 export const getUser= createAsyncThunk(
   'auth/getUser', async(_,{rejectWithValue})=>{
@@ -49,12 +53,15 @@ export const register = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk(
-  'auth/logout',
-  async () => {
-    localStorage.removeItem('access_token');
+export const logout = createAsyncThunk('auth/logout', async (_, { getState }) => {
+  try {
+    await axiosInst.post('/logout'); 
+  } catch (e) {
+    console.error('Logout error:', e);
+  } finally {
+    localStorage.clear(); 
   }
-);
+});
 
 const authSlice = createSlice({
   name: 'auth',
