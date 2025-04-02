@@ -19,5 +19,4 @@ Route::prefix('v1')->group(function () {
         Route::get('/health-metrics/weekly', [HealthMetricsController::class, 'getWeeklyMetrics']);
     });
 
-    Route::post('/logout', [AuthController::class, 'logout']);
 });

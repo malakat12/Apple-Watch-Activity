@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axiosInst from '../api/axiosInst';
+import axiosInst from '../utils/axiosInst';
 
 export const getDaily= createAsyncThunk('healthMetrics/getDaily', async()=>{
     const response = await axiosInst.get('/health-metrics/daily');

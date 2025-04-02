@@ -1,6 +1,6 @@
 import React from 'react';
-import DailyTrendsChart from './DailyTrendsChart.jsx';
-import WeeklyTrendsChart from './WeeklyTrendsChart';
+import DailyTrendsChart from '../features/DailyTrendsChart.jsx';
+import WeeklyTrendsChart from '../features/WeeklyTrendsChart.jsx';
   
 const Dashboard = ()=>{
     return (
