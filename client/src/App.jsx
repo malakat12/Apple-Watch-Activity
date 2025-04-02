@@ -13,7 +13,7 @@ const App = () => {
 
   useEffect(() => {
     if (token) {
-      dispatch(getUser()); // Fetch user if token exists
+      dispatch(getUser()); 
     }
   }, [dispatch, token]);
 
@@ -24,12 +24,16 @@ const App = () => {
         {/*<Route path="/register" element={!token ? <Register /> : <Navigate to="/dashboard" />} />*/}
 
         {/* Protected Routes */}
-        <Route 
-          path="/dashboard" 
-          element={<ProtectedRoute element={<Dashboard />} />} 
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
         />
 
-        {/* Default route <Route path="/" element={<Navigate to={token ? "/dashboard" : "/login"} />} /> */}
+        <Route path="/" element={<Navigate to={token ? "/dashboard" : "/login"} />} /> 
         
       </Routes>
     </Router>

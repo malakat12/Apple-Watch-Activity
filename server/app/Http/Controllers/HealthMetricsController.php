@@ -7,6 +7,7 @@ use App\Models\HealthMetric;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use League\Csv\Reader;
+use Carbon\Carbon;
 
 class HealthMetricsController extends Controller
 {
@@ -72,7 +73,9 @@ class HealthMetricsController extends Controller
                 ->get();
             
             return response()->json([
-                'dates' => $metrics->pluck('date')->map(fn($date) => $date->format('Y-m-d')),
+                'dates' => $metrics->pluck('date')->map(function($date) {
+                    return is_string($date) ? $date : $date->format('Y-m-d');
+                }),                
                 'steps' => $metrics->pluck('steps'),
                 'distance' => $metrics->pluck('distance_km'),
                 'active_minutes' => $metrics->pluck('active_minutes')
@@ -88,7 +91,11 @@ class HealthMetricsController extends Controller
                 ->where('date', '>=', now()->subWeeks($weeks))
                 ->get()
                 ->groupBy(function($item) {
-                    return $item->date->startOfWeek()->format('Y-m-d');
+                    $date = is_string($item->date) 
+                        ? \Carbon\Carbon::parse($item->date)
+                        : $item->date;
+                        
+                    return $date->startOfWeek()->format('Y-m-d');
                 })
                 ->map(function($weekMetrics) {
                     return [
