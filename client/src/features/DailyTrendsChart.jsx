@@ -27,7 +27,7 @@ ChartJS.register(
 
 const DailyTrendsChart= ()=>{
     const dispatch = useDispatch();
-    const {data , loading, error}= useSelector((state)=>state.healthMetrics.daily);
+    const { data, loading, error } = useSelector((state) => state.healthMetrics.daily);
 
     useEffect(()=>{
         dispatch(getDaily());
@@ -35,22 +35,58 @@ const DailyTrendsChart= ()=>{
 
     if (loading) return <p>Loading daily metrics...</p>;
     if (error) return <p>Error loading data: {error}</p>;
-    if(!data || !Array.isArray(data)) return <p>No daily data</p>;
+    if (!data) return <p>No daily data available</p>;
 
     const charData={
-        labels: data.map(item=>item.date),
-        datasets:[
-            {
-                label: 'Daily Activity',
-                data: data.map(item=>item.value),
-                fill:true,
-                backgroundColor: 'rgba(75,192,192,0.2)',
-                borderColor:'rgba(75,192,192,1)',
-            }
+        labels: data.dates,
+        datasets: [
+          {
+            label: 'Steps',
+            data: data.steps,
+            fill: true,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            tension: 0.1
+          },
+          {
+            label: 'Active Minutes',
+            data: data.active_minutes,
+            fill: false,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            tension: 0.1
+          }
         ]
     };
     
-    return <Line data={charData} />;
+    const options = {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Daily Health Metrics',
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Date'
+            }
+          },
+          y: {
+            beginAtZero: true
+          }
+        }
+      };
+    
+      return (
+        <div>
+          <Line data={charData} options={options} />
+        </div>
+      );
 };
 
 export default DailyTrendsChart;

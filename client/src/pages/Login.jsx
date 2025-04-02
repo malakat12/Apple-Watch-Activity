@@ -37,13 +37,13 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container">
       <h2>Login</h2>
       {(localError || error) && (
-        <div style={styles.errorMessage}>{localError || error}</div>
+        <div className="errorMessage">{localError || error}</div>
       )}
       <form onSubmit={handleSubmit}>
-        <div style={styles.inputGroup}>
+        <div className="inputGroup">
           <label>Email:</label>
           <input
             type="email"
@@ -52,9 +52,9 @@ const Login = () => {
             required
           />
         </div>
-        <div style={styles.inputGroup}>
+        <div className="inputGroup">
           <label>Password:</label>
-          <div style={{ position: 'relative' }}>
+          <div>
             <input
               type={showPassword ? 'text' : 'password'}
               value={password}
@@ -64,7 +64,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              style={styles.toggleButton}
+              className="toggleButton"
             >
               {showPassword ? '👁️' : '👁️‍🗨️'}
             </button>
@@ -73,7 +73,7 @@ const Login = () => {
         <button 
           type="submit" 
           disabled={loading || !email || !password}
-          style={styles.submitButton}
+          className="submitButton"
         >
           {loading ? 'loading...' : 'Login'}
         </button>
